@@ -12,7 +12,8 @@ type DbInstance struct {
 	Db *gorm.DB
 }
 
-var ApplicationDB DbInstance
+var Database DbInstance
+var ApplicationDB *gorm.DB
 
 func InitializeDB() {
 	DNS := "host=localhost user=postgres password=password dbname=gopos port=5432 sslmode=disable"
@@ -21,7 +22,8 @@ func InitializeDB() {
 		fmt.Println(err.Error())
 	}
 	db.Logger.LogMode(logger.Info)
-	ApplicationDB = DbInstance{
+	Database = DbInstance{
 		Db: db,
 	}
+	ApplicationDB = Database.Db
 }
