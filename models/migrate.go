@@ -5,6 +5,6 @@ import (
 )
 
 func Migrate() error {
-	storage.ApplicationDB.AutoMigrate(&Product{})
+	storage.ApplicationDB.AutoMigrate(&Product{}, &User{})
 	return nil
 }
